@@ -1,0 +1,7 @@
+# local installation (automatically updates when source has been changed)
+pip install -e .
+
+# create distribution
+python setup.py bdist_wheel
+
+#
