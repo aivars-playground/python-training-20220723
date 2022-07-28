@@ -1,6 +1,8 @@
 import os
 
+from distutils.command.config import config
 from flask import Flask
+from flask_migrate import Migrate
 
 def create_app(test_config=None):
     app = Flask(__name__)
@@ -12,6 +14,11 @@ def create_app(test_config=None):
         app.config.from_pyfile('config.py', silent=True)
     else:
         app.config.from_mapping(test_config)
+
+    from .models import db
+
+    db.init_app(app)
+    migrate = Migrate(app,db)
     
     return app
 
