@@ -1,7 +1,7 @@
+import functools
 import os
 
-from distutils.command.config import config
-from flask import Flask, render_template, redirect, session, flash, url_for, request
+from flask import Flask, render_template, redirect, session, flash, url_for, request, g
 from flask_migrate import Migrate
 from werkzeug.security import generate_password_hash, check_password_hash
 
@@ -16,10 +16,30 @@ def create_app(test_config=None):
     else:
         app.config.from_mapping(test_config)
 
-    from .models import db, User
+    from .models import db, User, Note
 
     db.init_app(app)
     migrate = Migrate(app,db)
+
+    def require_login(view):
+        @functools.wraps(view)
+        def wrapped_view(**kwargs):
+            if not g.user:
+                return redirect(url_for('log_in'))
+            return view(**kwargs)
+        return wrapped_view
+    
+    @app.errorhandler(404)
+    def page_not_found(e):
+        return render_template('404.html')
+
+    @app.before_request
+    def load_user():
+        user_id = session.get('user_id')
+        if user_id:
+            g.user = User.query.get(user_id)
+        else:
+            g.user = None
     
     @app.route('/sign_up', methods=('GET', 'POST'))
     def sign_up():
@@ -76,9 +96,70 @@ def create_app(test_config=None):
         flash('Sucessfully logged out', 'success')
         return redirect(url_for('log_in'))
 
-
     @app.route('/')
     def index():
-        return 'Index'
+        return redirect(url_for('note_index'))
+
+    @app.route('/notes')
+    @require_login
+    def note_index():
+        return render_template('note_index.html', notes = g.user.notes)
+        
+    @app.route('/notes/new', methods=('GET','POST'))
+    @require_login
+    def note_create():
+        if request.method == 'POST':
+            title = request.form['title']
+            body = request.form['body']
+            error = None
+
+            if not title:
+                error = 'Title is required'
+            
+            if error is None:
+                note = Note(author = g.user, title = title, body = body)
+                db.session.add(note)
+                db.session.commit()
+                flash(f'note added, {note.id}, {note.title}', 'success')
+                return redirect(url_for('note_index'))
+
+            flash(error, 'error')
+        
+        return render_template('note_create.html')
+
+    @app.route('/notes/<note_id>/edit', methods=('GET','POST'))
+    @require_login
+    def note_update(note_id):
+        note = Note.query.filter_by(user_id=g.user.id, id=note_id).first_or_404()
+
+        if request.method =='POST':
+            title = request.form['title']
+            body = request.form['body']
+            error = None
+
+            if not title:
+                error = 'Title is required.'
+
+            if error is None:
+                note.title = title
+                note.body = body
+                db.session.add(note)
+                db.session.commit()
+                flash(f'note updated, {note.id}, {note.title}', 'success')
+                return redirect(url_for('note_index'))
+            
+            flash(error, 'error')
+
+        return render_template('note_update.html', note=note)
+    
+
+    @app.route('/notes/<note_id>/delete', methods=('GET','DELETE'))
+    @require_login
+    def note_delete(note_id):
+        note = Note.query.filter_by(user_id=g.user.id, id=note_id).first_or_404()
+        db.session.delete(note)
+        db.session.commit()
+        flash(f'note deleted, {note.id}, {note.title}', 'success')
+        return redirect(url_for('note_index'))
 
     return app
