@@ -14,5 +14,6 @@ put in .env file   (need dotenv python module)
 "export DB_PASS=pass"
 
 * init
-flask db init  
-flask db migrate
+flask db init   
+flask db migrate   
+flask db upgrade   
