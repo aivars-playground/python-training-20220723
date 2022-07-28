@@ -1,8 +1,9 @@
 import os
 
 from distutils.command.config import config
-from flask import Flask
+from flask import Flask, render_template, redirect, flash, url_for, request
 from flask_migrate import Migrate
+from werkzeug.security import generate_password_hash
 
 def create_app(test_config=None):
     app = Flask(__name__)
@@ -15,10 +16,38 @@ def create_app(test_config=None):
     else:
         app.config.from_mapping(test_config)
 
-    from .models import db
+    from .models import db, User
 
     db.init_app(app)
     migrate = Migrate(app,db)
     
-    return app
+    @app.route('/sign_up', methods=('GET', 'POST'))
+    def sign_up():
+        if request.method == 'POST':
+            username = request.form['username']
+            password = request.form['password']
+            error = None
+            if not username:
+                error = 'Username is required'
+            elif not password:
+                error = 'Password is required'
+            elif User.query.filter_by(username = username).first():
+                error = 'User exists'
 
+            if error is None:
+                user = User(username = username, password = generate_password_hash(password))
+                db.session.add(user)
+                db.session.commit()
+                flash('Sucessfully signed up', 'success')
+                return redirect(url_for('log_in'))
+            else:
+                flash(error, 'error')
+
+        return render_template('sign_up.html')
+
+    @app.route('/log_in')
+    def log_in():
+        return 'Login'
+
+
+    return app
