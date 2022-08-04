@@ -25,7 +25,7 @@ create ./.vscode/settings.json:
 ```
 
 
-development
+development (CLI)
 -----------
 
 ```
@@ -41,3 +41,10 @@ testing
 python assault/cli.py --help
 python assault/cli.py -r 1 -c 2 -j 3 abc
 ```
+
+
+development (Async)
+-----------
+ pipenv install requests  
+
+ Note: 'requests' is not asyncio compatible
