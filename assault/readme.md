@@ -10,7 +10,8 @@ creating environment:
 ---------------------
 ```
 > pip3.10 install --user pipenv
-> pipenv install --python python3.10 twine --dev
+> pipenv install --python python3.10
+> pipenv install twine --dev
 > pipenv install pylint --dev
 > pipenv install black --dev
 ```
@@ -48,3 +49,23 @@ development (Async)
  pipenv install requests  
 
  Note: 'requests' is not asyncio compatible
+
+
+ development (Typecheck)
+ ---
+ install pyright
+
+test
+---
+ python -m doctest assault/stats.py 
+
+
+ local install
+ ---
+ pip install -e .  
+
+
+sudo docker run -p 8080:80 -d nginxdemos/hello
+DEBUG=true assault -c 10 -r 30 http://host.docker.internal:8080
+
+DEBUG=true assault -c 1 -r 2 -j out.json https://google.com
