@@ -7,6 +7,7 @@ https://github.com/kennethreitz/setup.py
 
 
 creating environment:
+---------------------
 ```
 > pip3.10 install --user pipenv
 > pipenv install --python python3.10 twine --dev
@@ -22,4 +23,3 @@ create ./.vscode/settings.json:
     "editor.formatOnSave": true,
 }
 ```
-
