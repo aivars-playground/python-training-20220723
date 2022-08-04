@@ -1,0 +1,5 @@
+{
+    "python.defaultInterpreterPath": "~/.local/share/virtualenvs/assault-_0JwWndx/bin/python",
+    "python.linting.enabled": true,
+    "editor.formatOnSave": true,
+}
