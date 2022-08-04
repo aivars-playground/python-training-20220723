@@ -23,3 +23,21 @@ create ./.vscode/settings.json:
     "editor.formatOnSave": true,
 }
 ```
+
+
+development
+-----------
+
+```
+pipenv install click
+```
+
+add click to setup.py. 'required' list
+
+
+testing
+-------
+```
+python assault/cli.py --help
+python assault/cli.py -r 1 -c 2 -j 3 abc
+```
