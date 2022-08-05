@@ -1,3 +1,4 @@
+"""cli parser"""
 import sys
 import json
 import click
@@ -29,4 +30,9 @@ def cli(filename, server):
         servers.add(server)
 
     print(f"calling:{servers}")
-    print(ping_servers(servers))
+    result = ping_servers(servers)
+
+    print("===SUCCESSFUL===")
+    print(*result["success"], sep="\n")
+    print("===FAILED=======")
+    print(*result["failures"], sep="\n")
