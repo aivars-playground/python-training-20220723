@@ -32,5 +32,17 @@ project/
 
 Install a local folder:
 ```
-pdm install --dev 
+> pdm install --dev 
+
+> cli_server_check
 ```
+
+```json
+// ./.ignoreme/in.json
+[
+    "https://google.com:80",
+    "https://yahoo.com:80"
+]
+```
+cli_server_check -f .ignoreme/in.json -s "https://bing.com:80"
+

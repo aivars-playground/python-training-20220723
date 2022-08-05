@@ -19,7 +19,7 @@ dependencies = [
 ]
 
 [project.scripts]
-cli_server_check = "cli_server_check.__main__:main"
+cli_server_check = "cli_server_check.__main__:cli"
 
 [project.optional-dependencies]
 [tool.pdm.dev-dependencies]
