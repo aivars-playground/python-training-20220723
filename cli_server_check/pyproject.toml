@@ -15,15 +15,16 @@ classifiers = [
     "Programming Language :: Python :: 3",
 ]
 dependencies = [
-    "click"
+    "click",
+    "requests>=2.28.1"
 ]
 
 [project.scripts]
-cli_server_check = "cli_server_check.__main__:cli"
+cli_server_check = "cli_server_check.cli:cli"
 
 [project.optional-dependencies]
 [tool.pdm.dev-dependencies]
 dev = [
     "black>=22.6.0",
-    "pylint>=2.14.5",
+    "pylint>=2.14.5"
 ]
