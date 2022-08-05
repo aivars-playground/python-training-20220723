@@ -1,6 +1,6 @@
 [build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
+requires = ["pdm-pep517"]
+build-backend = "pdm.pep517.api"
 
 [project]
 name = "python_toml"
@@ -18,9 +18,12 @@ dependencies = [
     "click"
 ]
 
-[project.urls]
-"Homepage" = "https://github.com/pypa/sampleproject"
-"Bug Tracker" = "https://github.com/pypa/sampleproject/issues"
-
 [project.scripts]
 python_toml = "python_toml.__main__:main"
+
+[project.optional-dependencies]
+[tool.pdm.dev-dependencies]
+dev = [
+    "black>=22.6.0",
+    "pylint>=2.14.5",
+]

@@ -1,14 +1,10 @@
 * Prepare dev environment
 ```bash
-python3.10 -m pip install --upgrade pip setuptools wheel pipenv
-pipenv --python python3.10
+python3.10 -m pip install --upgrade pip pdm
+pdm install
 ```
 
 * Configure vscode
-```bash
-pipenv --py
-pipenv install pylint black --dev
-```
 ```json
 // <project_root>/.vscode/settings.json
 {
