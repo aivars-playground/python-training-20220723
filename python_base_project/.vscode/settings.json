@@ -1,0 +1,6 @@
+{
+    "python.defaultInterpreterPath": "~/.local/share/virtualenvs/python_base_project-DLUp_R4Y/bin/python",
+    "python.linting.enabled": true,
+    "editor.formatOnSave": true,
+    "python.formatting.provider": "black",
+}
