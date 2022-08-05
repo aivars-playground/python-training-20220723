@@ -1,0 +1,6 @@
+{
+    "python.defaultInterpreterPath": "~/.local/share/virtualenvs/python_toml_project-e71WOu89/bin/python",
+    "python.linting.enabled": true,
+    "editor.formatOnSave": true,
+    "python.formatting.provider": "black",
+}
