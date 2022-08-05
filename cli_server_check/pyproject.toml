@@ -1,0 +1,29 @@
+[build-system]
+requires = ["pdm-pep517"]
+build-backend = "pdm.pep517.api"
+
+[project]
+name = "cli_server_check"
+version = "0.0.1"
+authors = [
+  { name="Example Author", email="author@example.com" },
+]
+description = "A small example package"
+readme = "README.md"
+requires-python = ">=3.10"
+classifiers = [
+    "Programming Language :: Python :: 3",
+]
+dependencies = [
+    "click"
+]
+
+[project.scripts]
+cli_server_check = "cli_server_check.__main__:main"
+
+[project.optional-dependencies]
+[tool.pdm.dev-dependencies]
+dev = [
+    "black>=22.6.0",
+    "pylint>=2.14.5",
+]
