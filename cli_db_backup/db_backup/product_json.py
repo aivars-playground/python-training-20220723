@@ -4,7 +4,6 @@ from db_backup.config import Session
 from db_backup.models import Review, Product
 
 from sqlalchemy.sql import func
-import csv
 
 session = Session()
 
@@ -18,10 +17,7 @@ review_statement = (
     .subquery()
 )
 
-csv_file = open(".ignoreme/ratings.csv", "w")
-fields = ["name", "level", "published", "created_on", "review_count", "avg_rating"]
-csv_writer = csv.DictWriter(csv_file, fieldnames=fields)
-csv_writer.writeheader()
+products = []
 
 for product, review_count, avg_rating in (
     session.query(
@@ -30,15 +26,18 @@ for product, review_count, avg_rating in (
     .outerjoin(review_statement, Product.id == review_statement.c.product_id)
     .limit(6)
 ):
-    csv_writer.writerow(
+    products.append(
         {
             "name": product.name,
             "level": product.level,
             "published": product.published,
-            "created_on": product.created_on.date(),
+            "created_on": str(product.created_on.date()),
             "review_count": review_count,
             "avg_rating": round(float(avg_rating), 4) if avg_rating else 0,
         }
     )
 
-csv_file.close()
+import json
+
+with open(".ignoreme/ratings.json", "w") as json_file:
+    json.dump(products, json_file)
