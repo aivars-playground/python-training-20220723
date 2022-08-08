@@ -1,6 +1,7 @@
 import os
 from dotenv import load_dotenv
 from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
 from functools import lru_cache  # returns same result when calling with same parameters
 
 
@@ -19,3 +20,16 @@ def engine(db_url=None):
 
 def get_connection(db_url=None):
     return engine(db_url).connect()
+
+
+# Returns a session class!!!
+@lru_cache(maxsize=32)
+def get_session_class(db_url=None):
+    return sessionmaker(bind=engine(db_url))
+
+
+# convenience... use config.session directly
+try:
+    Session = get_session_class()
+except:
+    print("ERR: failed creating a session class")
