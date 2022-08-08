@@ -1,3 +1,4 @@
 {
-    "python.defaultInterpreterPath": "~/.local/share/virtualenvs/development-b1-6O1J9/bin/python"
+    "python.defaultInterpreterPath": "~/.local/share/virtualenvs/development-b1-6O1J9/bin/python",
+    "python.languageServer":"Pylance"
 }
