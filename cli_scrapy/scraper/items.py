@@ -4,6 +4,7 @@
 # https://docs.scrapy.org/en/latest/topics/items.html
 
 import scrapy
+from dataclasses import dataclass
 
 
 class Dataset(scrapy.Item):
@@ -12,3 +13,10 @@ class Dataset(scrapy.Item):
     name = scrapy.Field()
     link = scrapy.Field()
     organization = scrapy.Field()
+
+
+@dataclass
+class Contribution:
+    author: scrapy.Field()
+    dates: scrapy.Field()
+    page: scrapy.Field()
