@@ -1,11 +1,10 @@
 [project]
-name = "db_backup"
+name = "scrapy-spider"
 version = "0.0.1"
-description = "db backup"
+description = "Scrapy Spider"
 dependencies = [
-    "SQLAlchemy>=1.4.39",
-    "psycopg2-binary>=2.9.3",
     "python-dotenv>=0.20.0",
+    "scrapy>=2.6.2",
 ]
 requires-python = ">=3.10"
 
