@@ -20,6 +20,16 @@ def test_app_with_source_file_no_filename():
         parser.parse_args([".", "--target"])
 
 
+def test_app_with_source_no_target():
+    """
+    With source and default target
+    """
+    parser = cli.create_parser()
+    args = parser.parse_args(["."])
+    assert args.source == "."
+    assert args.target == None
+
+
 def test_app_with_source_and_file_target():
     """
     With source and default target
