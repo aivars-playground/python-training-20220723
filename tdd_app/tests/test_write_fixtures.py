@@ -32,6 +32,6 @@ def test_write_to_s3(mocker, infile_for_test):
 
     writer.s3(client, infile_for_test, "bucket-name", "file-name")
 
-    client.upload_file_obj.assert_called_with(
-        [infile_for_test, "bucket-name", "file-name"]
+    client.upload_fileobj.assert_called_with(
+        infile_for_test, "bucket-name", "file-name"
     )

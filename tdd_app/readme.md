@@ -41,3 +41,16 @@ install awscli outside of virtualenv
 ```
 aws s3api create-bucket --bucket  `echo my-tb-$EPOCHSECONDS`
 ```
+
+manual test:  copy to s3
+```py
+from tddapp import writer
+import boto3
+
+client = boto3.client('s3')
+infile = open(".ignoreme/out.txt", "rb")
+writer.s3(client, infile, "my-tb-1660200353", "export.txt")
+```
+```bash
+aws s3api list-objects --bucket my-tb-1660200353
+```
