@@ -53,6 +53,28 @@ dependencies = [
 ]
 
 [[package]]
+name = "boto3"
+version = "1.24.49"
+requires_python = ">= 3.7"
+summary = "The AWS SDK for Python"
+dependencies = [
+    "botocore<1.28.0,>=1.27.49",
+    "jmespath<2.0.0,>=0.7.1",
+    "s3transfer<0.7.0,>=0.6.0",
+]
+
+[[package]]
+name = "botocore"
+version = "1.27.49"
+requires_python = ">= 3.7"
+summary = "Low-level, data-driven core of boto 3."
+dependencies = [
+    "jmespath<2.0.0,>=0.7.1",
+    "python-dateutil<3.0.0,>=2.1",
+    "urllib3<1.27,>=1.25.4",
+]
+
+[[package]]
 name = "cffi"
 version = "1.15.1"
 summary = "Foreign Function Interface for Python calling C code."
@@ -163,6 +185,12 @@ summary = "An autocompletion tool for Python that can be used for text editors."
 dependencies = [
     "parso<0.9.0,>=0.8.0",
 ]
+
+[[package]]
+name = "jmespath"
+version = "1.0.1"
+requires_python = ">=3.7"
+summary = "JSON Matching Expressions"
 
 [[package]]
 name = "jupyter-client"
@@ -388,6 +416,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "s3transfer"
+version = "0.6.0"
+requires_python = ">= 3.7"
+summary = "An Amazon S3 Transfer Manager"
+dependencies = [
+    "botocore<2.0a.0,>=1.12.36",
+]
+
+[[package]]
 name = "setuptools"
 version = "63.4.2"
 requires_python = ">=3.7"
@@ -434,6 +471,12 @@ requires_python = ">=3.7"
 summary = ""
 
 [[package]]
+name = "urllib3"
+version = "1.26.11"
+requires_python = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*, !=3.5.*, <4"
+summary = "HTTP library with thread-safe connection pooling, file post, and more."
+
+[[package]]
 name = "wcwidth"
 version = "0.2.5"
 summary = "Measures the displayed width of unicode strings in a terminal"
@@ -446,7 +489,7 @@ summary = "Module for decorators, wrappers and monkey patching."
 
 [metadata]
 lock_version = "4.0"
-content_hash = "sha256:43df84df299b47ab0f04d4cb0a8f192cb669d9854ba6c0d9464584bd18468044"
+content_hash = "sha256:965867bf8e009bb1548d20622bb2a3a0d1ec4591e0e089e0572429e99c51217f"
 
 [metadata.files]
 "appnope 0.1.3" = [
@@ -496,6 +539,14 @@ content_hash = "sha256:43df84df299b47ab0f04d4cb0a8f192cb669d9854ba6c0d9464584bd1
     {url = "https://files.pythonhosted.org/packages/d6/45/985c13ac6b2f67504cda61fc1d95365eb6446a4c6988ffe0f0f311f7a617/black-22.6.0-cp36-cp36m-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:94783f636bca89f11eb5d50437e8e17fbc6a929a628d82304c80fa9cd945f256"},
     {url = "https://files.pythonhosted.org/packages/e7/fe/4533d110ddced851a359cbbb162685814719690ee01939a34be023410854/black-22.6.0-cp38-cp38-macosx_11_0_arm64.whl", hash = "sha256:6c1734ab264b8f7929cef8ae5f900b85d579e6cbfde09d7387da8f04771b51c6"},
     {url = "https://files.pythonhosted.org/packages/fc/37/032c45b55f901ee3fe780fbc17fe2dc262c809d94de1288201350d8d680b/black-22.6.0-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:c9a3ac16efe9ec7d7381ddebcc022119794872abce99475345c5a61aa18c45ad"},
+]
+"boto3 1.24.49" = [
+    {url = "https://files.pythonhosted.org/packages/27/5d/ca925fe1c4eaefec8db8ff1e79b87a5dd51439e953a6f610513491272f52/boto3-1.24.49.tar.gz", hash = "sha256:19ce58ed29d8b9dc892c06978c0097e7149641511c6b41142ecfee0a5ed19b5b"},
+    {url = "https://files.pythonhosted.org/packages/bd/00/25d76584c4bb520ce15def26e5d0663651744efb1427e023a7eaf421bb9a/boto3-1.24.49-py3-none-any.whl", hash = "sha256:c960712b3a833d321a997a9fb59f3da21b026d5a23727c9cb49866d3794cdb67"},
+]
+"botocore 1.27.49" = [
+    {url = "https://files.pythonhosted.org/packages/4c/42/87bd73b02ef4f42747ef0ecc3904e3bb1d02cfa8ede575b9324f5be6b1d5/botocore-1.27.49-py3-none-any.whl", hash = "sha256:8e9556ef9f7f492e0755437a1430e32f63ddaf6df61c105957805067b5e22dbb"},
+    {url = "https://files.pythonhosted.org/packages/84/8e/8825192bc9164c899d80c8a63a99f0698e68411d23ac0dad99291b8c4c20/botocore-1.27.49.tar.gz", hash = "sha256:ac491c54cdf4126c98a999c5d473d734dc91c5b1e003d0fdafd5007d1408d046"},
 ]
 "cffi 1.15.1" = [
     {url = "https://files.pythonhosted.org/packages/00/05/23a265a3db411b0bfb721bf7a116c7cecaf3eb37ebd48a6ea4dfb0a3244d/cffi-1.15.1-cp27-cp27m-win_amd64.whl", hash = "sha256:e00b098126fd45523dd056d2efba6c5a63b71ffe9f2bbe1a4fe1716e1d0c331e"},
@@ -626,6 +677,10 @@ content_hash = "sha256:43df84df299b47ab0f04d4cb0a8f192cb669d9854ba6c0d9464584bd1
 "jedi 0.18.1" = [
     {url = "https://files.pythonhosted.org/packages/b3/0e/836f12ec50075161e365131f13f5758451645af75c2becf61c6351ecec39/jedi-0.18.1-py2.py3-none-any.whl", hash = "sha256:637c9635fcf47945ceb91cd7f320234a7be540ded6f3e99a50cb6febdfd1ba8d"},
     {url = "https://files.pythonhosted.org/packages/c2/25/273288df952e07e3190446efbbb30b0e4871a0d63b4246475f3019d4f55e/jedi-0.18.1.tar.gz", hash = "sha256:74137626a64a99c8eb6ae5832d99b3bdd7d29a3850fe2aa80a4126b2a7d949ab"},
+]
+"jmespath 1.0.1" = [
+    {url = "https://files.pythonhosted.org/packages/00/2a/e867e8531cf3e36b41201936b7fa7ba7b5702dbef42922193f05c8976cd6/jmespath-1.0.1.tar.gz", hash = "sha256:90261b206d6defd58fdd5e85f478bf633a2901798906be2ad389150c5c60edbe"},
+    {url = "https://files.pythonhosted.org/packages/31/b4/b9b800c45527aadd64d5b442f9b932b00648617eb5d63d2c7a6587b7cafc/jmespath-1.0.1-py3-none-any.whl", hash = "sha256:02e2e4cc71b5bcab88332eebf907519190dd9e6e82107fa7f83b1003a6252980"},
 ]
 "jupyter-client 7.3.4" = [
     {url = "https://files.pythonhosted.org/packages/bf/88/38e5592f8443d992de9fcb32d345260f94181408b43fba381e0e37aa7121/jupyter_client-7.3.4.tar.gz", hash = "sha256:aa9a6c32054b290374f95f73bb0cae91455c58dfb84f65c8591912b8f65e6d56"},
@@ -875,6 +930,10 @@ content_hash = "sha256:43df84df299b47ab0f04d4cb0a8f192cb669d9854ba6c0d9464584bd1
     {url = "https://files.pythonhosted.org/packages/f3/35/a78fd1072956b96a6d62ced4e849154dbc3ba5cc19a97cf46de85729e30f/pyzmq-23.2.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:f5aa9da520e4bb8cee8189f2f541701405e7690745094ded7a37b425d60527ea"},
     {url = "https://files.pythonhosted.org/packages/f3/38/3606f601f7af563009f29b6f1907b482cd9c0ecdc99ef5fb52669664eca5/pyzmq-23.2.0-cp38-cp38-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:859059caf564f0c9398c9005278055ed3d37af4d73de6b1597821193b04ca09b"},
 ]
+"s3transfer 0.6.0" = [
+    {url = "https://files.pythonhosted.org/packages/5e/c6/af903b5fab3f9b5b1e883f49a770066314c6dcceb589cf938d48c89556c1/s3transfer-0.6.0-py3-none-any.whl", hash = "sha256:06176b74f3a15f61f1b4f25a1fc29a4429040b7647133a463da8fa5bd28d5ecd"},
+    {url = "https://files.pythonhosted.org/packages/e1/eb/e57c93d5cd5edf8c1d124c831ef916601540db70acd96fa21fe60cef1365/s3transfer-0.6.0.tar.gz", hash = "sha256:2ed07d3866f523cc561bf4a00fc5535827981b117dd7876f036b0c1aca42c947"},
+]
 "setuptools 63.4.2" = [
     {url = "https://files.pythonhosted.org/packages/00/26/6c26b879cbd65b3c4daf7327a4cb205f8541c695e5d44b0c2c65892c20d1/setuptools-63.4.2.tar.gz", hash = "sha256:abcb76aa4decd7a17cbe0e4b31bdf549d106ba7f668e87e0860f5f7b84b9b3fe"},
     {url = "https://files.pythonhosted.org/packages/10/9f/e6b3ae7c925399e5d210fda0be141cfff052bbb935c2d762019067f52d2e/setuptools-63.4.2-py3-none-any.whl", hash = "sha256:73bfae4791da7c1c56882ab17577d00f7a37a0347162aeb9360058de0dc25083"},
@@ -911,6 +970,10 @@ content_hash = "sha256:43df84df299b47ab0f04d4cb0a8f192cb669d9854ba6c0d9464584bd1
 "traitlets 5.3.0" = [
     {url = "https://files.pythonhosted.org/packages/83/a9/1059771062cb80901c34a4dea020e76269412e69300b4ba12e3356865ad8/traitlets-5.3.0-py3-none-any.whl", hash = "sha256:65fa18961659635933100db8ca120ef6220555286949774b9cfc106f941d1c7a"},
     {url = "https://files.pythonhosted.org/packages/b2/ed/3c842dbe5a8f0f1ebf3f5b74fc1a46601ed2dfe0a2d256c8488d387b14dd/traitlets-5.3.0.tar.gz", hash = "sha256:0bb9f1f9f017aa8ec187d8b1b2a7a6626a2a1d877116baba52a129bfa124f8e2"},
+]
+"urllib3 1.26.11" = [
+    {url = "https://files.pythonhosted.org/packages/6d/d5/e8258b334c9eb8eb78e31be92ea0d5da83ddd9385dc967dd92737604d239/urllib3-1.26.11.tar.gz", hash = "sha256:ea6e8fb210b19d950fab93b60c9009226c63a28808bc8386e05301e25883ac0a"},
+    {url = "https://files.pythonhosted.org/packages/d1/cb/4783c8f1a90f89e260dbf72ebbcf25931f3a28f8f80e2e90f8a589941b19/urllib3-1.26.11-py2.py3-none-any.whl", hash = "sha256:c33ccba33c819596124764c23a97d25f32b28433ba0dedeb77d873a38722c9bc"},
 ]
 "wcwidth 0.2.5" = [
     {url = "https://files.pythonhosted.org/packages/59/7c/e39aca596badaf1b78e8f547c807b04dae603a433d3e7a7e04d67f2ef3e5/wcwidth-0.2.5-py2.py3-none-any.whl", hash = "sha256:beb4802a9cebb9144e99086eff703a642a13d6a0052920003a230f3294bbe784"},

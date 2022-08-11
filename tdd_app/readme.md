@@ -33,3 +33,11 @@ copy = open(".ignoreme/copy.txt", "wb")
 from tddapp import writer
 writer.local(infile,copy)
 ```
+
+
+AWS
+---
+install awscli outside of virtualenv
+```
+aws s3api create-bucket --bucket  `echo my-tb-$EPOCHSECONDS`
+```
