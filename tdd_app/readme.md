@@ -54,3 +54,10 @@ writer.s3(client, infile, "my-tb-1660200353", "export.txt")
 ```bash
 aws s3api list-objects --bucket my-tb-1660200353
 ```
+
+final test
+```bash
+python -m tddapp.cli . --target s3://my-tb-1660200353/export.txt
+python -m tddapp.cli . --target file://.ignoreme/export.txt
+python -m tddapp.cli .
+```
